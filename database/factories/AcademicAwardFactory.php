@@ -15,7 +15,7 @@ class AcademicAwardFactory extends Factory
 
     public function definition(): array
     {
-        $gpa = fake()->randomFloat(2, 1.00, 2.50);
+        $gpa = $this->faker->randomFloat(2, 1.00, 2.50);
 
         return [
             'student_id' => Student::inRandomOrder()->value('student_id'),

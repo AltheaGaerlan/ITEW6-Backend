@@ -22,7 +22,7 @@ class OrganizationFactory extends Factory
             ['name' => 'Cybersecurity Society', 'type' => 'Academic'],
         ];
 
-        $picked = fake()->unique()->randomElement($orgs);
+        $picked = $this->faker->unique()->randomElement($orgs);
 
         return [
             'organization_name' => $picked['name'],

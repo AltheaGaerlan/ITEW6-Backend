@@ -17,18 +17,18 @@ class StudentFactory extends Factory
     public function definition(): array
     {
         return [
-            'student_number' => '2024-' . fake()->unique()->numerify('####'),
-            'first_name' => fake()->firstName(),
-            'last_name' => fake()->lastName(),
-            'middle_name' => fake()->optional()->firstName(),
-            'gender' => fake()->randomElement(['Male', 'Female']),
-            'birthdate' => fake()->dateTimeBetween('-25 years', '-17 years')->format('Y-m-d'),
+            'student_number' => '2024-' . $this->faker->unique()->numerify('####'),
+            'first_name' => $this->faker->firstName(),
+            'last_name' => $this->faker->lastName(),
+            'middle_name' => $this->faker->optional()->firstName(),
+            'gender' => $this->faker->randomElement(['Male', 'Female']),
+            'birthdate' => $this->faker->dateTimeBetween('-25 years', '-17 years')->format('Y-m-d'),
             'civil_status' => 'Single',
-            'contact_number' => fake()->numerify('09#########'),
-            'email' => fake()->unique()->safeEmail(),
-            'address' => fake()->address(),
+            'contact_number' => $this->faker->numerify('09#########'),
+            'email' => $this->faker->unique()->safeEmail(),
+            'address' => $this->faker->address(),
             'section_id' => Section::inRandomOrder()->value('section_id'),
-            'status' => fake()->randomElement(['Active', 'Inactive']),
+            'status' => $this->faker->randomElement(['Active', 'Inactive']),
             'guardian_id' => Guardian::inRandomOrder()->value('guardian_id'),
         ];
     }

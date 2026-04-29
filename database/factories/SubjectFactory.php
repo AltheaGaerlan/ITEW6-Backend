@@ -34,15 +34,15 @@ class SubjectFactory extends Factory
             ['code' => 'GE102', 'name' => 'Mathematics in the Modern World', 'units' => 3, 'category' => 'GE', 'semester' => '2nd'],
         ];
 
-        $picked = fake()->unique()->randomElement($subjects);
+        $picked = $this->faker->unique()->randomElement($subjects);
 
         return [
             'subject_code' => $picked['code'],
             'subject_name' => $picked['name'],
-            'description' => fake()->sentence(20),
+            'description' => $this->faker->sentence(20),
             'units' => $picked['units'],
             'lecture_hours' => $picked['units'],
-            'lab_hours' => fake()->randomElement([0, 3, 6]),
+            'lab_hours' => $this->faker->randomElement([0, 3, 6]),
             'department_id' => Department::inRandomOrder()->value('department_id'),
             'course_category' => $picked['category'],
             'semester' => $picked['semester'],

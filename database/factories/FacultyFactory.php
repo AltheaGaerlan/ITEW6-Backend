@@ -16,17 +16,17 @@ class FacultyFactory extends Factory
     public function definition(): array
     {
         return [
-            'first_name' => fake()->firstName(),
-            'last_name' => fake()->lastName(),
-            'email' => fake()->unique()->safeEmail(),
+            'first_name' => $this->faker->firstName(),
+            'last_name' => $this->faker->lastName(),
+            'email' => $this->faker->unique()->safeEmail(),
             'department_id' => Department::inRandomOrder()->value('department_id'),
-            'position' => fake()->randomElement([
+            'position' => $this->faker->randomElement([
                 'Instructor',
                 'Assistant Professor',
                 'Associate Professor',
                 'Professor',
             ]),
-            'expertise' => fake()->randomElement([
+            'expertise' => $this->faker->randomElement([
                 'Web Development',
                 'Database Systems',
                 'Networking',
@@ -34,7 +34,7 @@ class FacultyFactory extends Factory
                 'Software Engineering',
                 'Data Analytics',
             ]),
-            'status' => fake()->randomElement([
+            'status' => $this->faker->randomElement([
                 'Active',
                 'Inactive',
             ]),
