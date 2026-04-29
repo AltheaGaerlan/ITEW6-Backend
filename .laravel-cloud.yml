@@ -2,7 +2,6 @@ name: itew6-backend
 type: laravel
 environment:
   php: '8.2'
-  node: '18'
   extensions:
     - pdo_pgsql
     - pgsql
