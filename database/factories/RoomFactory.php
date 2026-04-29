@@ -19,16 +19,16 @@ class RoomFactory extends Factory
         $floors = [1, 2, 3, 4, 5];
 
         return [
-            'room_name' => $this->faker->unique()->randomElement([
-                'Room ' . $this->faker->numberBetween(101, 999),
-                'Lab ' . $this->faker->numberBetween(1, 20),
-                'Hall ' . $this->faker->numberBetween(1, 5),
+            'room_name' => fake()->unique()->randomElement([
+                'Room ' . fake()->numberBetween(101, 999),
+                'Lab ' . fake()->numberBetween(1, 20),
+                'Hall ' . fake()->numberBetween(1, 5),
             ]),
-            'room_type' => $this->faker->randomElement($roomTypes),
-            'capacity' => $this->faker->randomElement([30, 40, 50, 60, 80, 100]),
-            'building' => $this->faker->randomElement($buildings),
-            'floor' => $this->faker->randomElement($floors),
-            'status' => $this->faker->randomElement(['available', 'available', 'available', 'occupied', 'maintenance']),
+            'room_type' => fake()->randomElement($roomTypes),
+            'capacity' => fake()->randomElement([30, 40, 50, 60, 80, 100]),
+            'building' => fake()->randomElement($buildings),
+            'floor' => fake()->randomElement($floors),
+            'status' => fake()->randomElement(['available', 'available', 'available', 'occupied', 'maintenance']),
         ];
     }
 }

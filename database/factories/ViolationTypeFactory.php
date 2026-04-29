@@ -22,7 +22,7 @@ class ViolationTypeFactory extends Factory
             ['name' => 'Misconduct', 'severity' => 'High'],
         ];
 
-        $picked = $this->faker->unique()->randomElement($types);
+        $picked = fake()->unique()->randomElement($types);
 
         return [
             'violation_name' => $picked['name'],

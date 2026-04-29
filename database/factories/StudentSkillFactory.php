@@ -19,18 +19,18 @@ class StudentSkillFactory extends Factory
         return [
             'student_id' => Student::inRandomOrder()->value('student_id'),
             'skill_id' => Skill::inRandomOrder()->value('skill_id'),
-            'skill_level' => $this->faker->randomElement([
+            'skill_level' => fake()->randomElement([
                 'Beginner',
                 'Intermediate',
                 'Advanced',
             ]),
-            'certification' => $this->faker->optional()->randomElement([
+            'certification' => fake()->optional()->randomElement([
                 'TESDA NC II',
                 'Cisco Certificate',
                 'Google Certificate',
                 'Microsoft Certification',
             ]),
-            'date_acquired' => $this->faker->optional()->date(),
+            'date_acquired' => fake()->optional()->date(),
         ];
     }
 }

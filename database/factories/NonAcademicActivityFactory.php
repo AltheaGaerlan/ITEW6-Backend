@@ -17,26 +17,26 @@ class NonAcademicActivityFactory extends Factory
     {
         return [
             'student_id' => Student::inRandomOrder()->value('student_id'),
-            'activity_name' => $this->faker->randomElement([
+            'activity_name' => fake()->randomElement([
                 'Hackathon Participation',
                 'Basketball Tournament',
                 'Debate Competition',
                 'Volunteer Outreach Program',
                 'Coding Bootcamp',
             ]),
-            'category' => $this->faker->randomElement([
+            'category' => fake()->randomElement([
                 'Sports',
                 'Community Extension',
                 'Competition',
                 'Leadership',
             ]),
-            'achievement' => $this->faker->optional()->randomElement([
+            'achievement' => fake()->optional()->randomElement([
                 'Champion',
                 '1st Runner-Up',
                 'Best in Teamwork',
                 'Certificate of Participation',
             ]),
-            'activity_date' => $this->faker->date(),
+            'activity_date' => fake()->date(),
         ];
     }
 }

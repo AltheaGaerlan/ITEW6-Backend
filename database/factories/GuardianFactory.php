@@ -15,10 +15,10 @@ class GuardianFactory extends Factory
     public function definition(): array
     {
         return [
-            'first_name' => $this->faker->firstName(),
-            'last_name' => $this->faker->lastName(),
-            'email' => $this->faker->unique()->safeEmail(),
-            'contact_number' => $this->faker->numerify('09#########'),
+            'first_name' => fake()->firstName(),
+            'last_name' => fake()->lastName(),
+            'email' => fake()->unique()->safeEmail(),
+            'contact_number' => fake()->numerify('09#########'),
         ];
     }
 }

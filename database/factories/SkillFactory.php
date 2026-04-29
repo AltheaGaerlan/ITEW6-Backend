@@ -27,7 +27,7 @@ class SkillFactory extends Factory
             ['name' => 'Teamwork', 'category' => 'Soft Skill'],
         ];
 
-        $picked = $this->faker->unique()->randomElement($skills);
+        $picked = fake()->unique()->randomElement($skills);
 
         return [
             'skill_name' => $picked['name'],
