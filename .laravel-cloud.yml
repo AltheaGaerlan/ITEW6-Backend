@@ -3,11 +3,14 @@ type: laravel
 environment:
   php: '8.2'
   node: '18'
+  extensions:
+    - pdo_pgsql
+    - pgsql
 database:
   type: postgres
   version: '18'
 build:
-  - composer install --no-dev --optimize-autoloader
+  - composer install --no-dev --optimize-autoloader --ignore-platform-req=ext-pgsql
   - php artisan config:cache
   - php artisan route:cache
   - php artisan view:cache
