@@ -1,0 +1,27 @@
+name: itew6-backend
+type: laravel
+environment:
+  php: '8.2'
+  node: '18'
+database:
+  type: postgres
+  version: '18'
+build:
+  - composer install --no-dev --optimize-autoloader
+  - php artisan config:cache
+  - php artisan route:cache
+  - php artisan view:cache
+deploy:
+  - php artisan migrate --force
+  - php artisan storage:link
+  - php artisan cache:clear
+web:
+  directory: public
+  entrypoint: index.php
+  memory: 512
+  cpu: 1
+workers:
+  - name: queue
+    command: php artisan queue:work --sleep=3 --tries=3 --max-time=3600
+    memory: 256
+    cpu: 0.5
