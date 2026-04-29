@@ -15,6 +15,7 @@ build:
   - php artisan view:cache
 deploy:
   - php artisan migrate --force
+  - php artisan db:seed --force
   - php artisan storage:link
   - php artisan cache:clear
 web:
