@@ -116,5 +116,5 @@ Route::prefix('v1')->group(function () {
     Route::post('/users', [ProfileController::class, 'store']);
     Route::delete('/users/{id}', [ProfileController::class, 'destroy']);
 });
-});
+    });
 });
