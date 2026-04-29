@@ -2,9 +2,9 @@
 
 namespace Database\Factories;
 
-use App\Models\Section;
+use Faker\Factory as FakerFactory;
 use App\Models\Faculty;
-use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Section;
 
 /**
  * @extends Factory<Section>
@@ -15,10 +15,11 @@ class SectionFactory extends Factory
 
     public function definition(): array
     {
-        $year = fake()->numberBetween(1, 4);
+        $faker = FakerFactory::create();
+        $year = $faker->numberBetween(1, 4);
 
         return [
-            'section_name' => 'BSIT-' . $year . fake()->randomElement(['A', 'B', 'C']),
+            'section_name' => 'BSIT-' . $year . $faker->randomElement(['A', 'B', 'C']),
             'year_level' => $year,
             'school_year' => '2024-2025',
             'adviser_id' => Faculty::inRandomOrder()->value('faculty_id'),

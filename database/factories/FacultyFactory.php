@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
+use Faker\Factory as FakerFactory;
 use App\Models\Faculty;
-use App\Models\Department;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -15,18 +15,19 @@ class FacultyFactory extends Factory
 
     public function definition(): array
     {
+        $faker = FakerFactory::create();
         return [
-            'first_name' => fake()->firstName(),
-            'last_name' => fake()->lastName(),
-            'email' => fake()->unique()->safeEmail(),
+            'first_name' => $faker->firstName(),
+            'last_name' => $faker->lastName(),
+            'email' => $faker->unique()->safeEmail(),
             'department_id' => Department::inRandomOrder()->value('department_id'),
-            'position' => fake()->randomElement([
+            'position' => $faker->randomElement([
                 'Instructor',
                 'Assistant Professor',
                 'Associate Professor',
                 'Professor',
             ]),
-            'expertise' => fake()->randomElement([
+            'expertise' => $faker->randomElement([
                 'Web Development',
                 'Database Systems',
                 'Networking',
@@ -34,7 +35,7 @@ class FacultyFactory extends Factory
                 'Software Engineering',
                 'Data Analytics',
             ]),
-            'status' => fake()->randomElement([
+            'status' => $faker->randomElement([
                 'Active',
                 'Inactive',
             ]),

@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
+use Faker\Factory as FakerFactory;
 use App\Models\Guardian;
-use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends Factory<Guardian>
@@ -14,11 +14,12 @@ class GuardianFactory extends Factory
 
     public function definition(): array
     {
+        $faker = FakerFactory::create();
         return [
-            'first_name' => fake()->firstName(),
-            'last_name' => fake()->lastName(),
-            'email' => fake()->unique()->safeEmail(),
-            'contact_number' => fake()->numerify('09#########'),
+            'first_name' => $faker->firstName(),
+            'last_name' => $faker->lastName(),
+            'email' => $faker->unique()->safeEmail(),
+            'contact_number' => $faker->numerify('09#########'),
         ];
     }
 }

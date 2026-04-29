@@ -2,9 +2,9 @@
 
 namespace Database\Factories;
 
-use App\Models\AcademicAward;
+use Faker\Factory as FakerFactory;
 use App\Models\Student;
-use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\AcademicAward;
 
 /**
  * @extends Factory<AcademicAward>
@@ -15,7 +15,8 @@ class AcademicAwardFactory extends Factory
 
     public function definition(): array
     {
-        $gpa = fake()->randomFloat(2, 1.00, 2.50);
+        $faker = FakerFactory::create();
+        $gpa = $faker->randomFloat(2, 1.00, 2.50);
 
         return [
             'student_id' => Student::inRandomOrder()->value('student_id'),

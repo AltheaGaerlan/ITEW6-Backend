@@ -2,9 +2,9 @@
 
 namespace Database\Factories;
 
-use App\Models\NonAcademicActivity;
+use Faker\Factory as FakerFactory;
 use App\Models\Student;
-use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\NonAcademicActivity;
 
 /**
  * @extends Factory<NonAcademicActivity>
@@ -15,28 +15,29 @@ class NonAcademicActivityFactory extends Factory
 
     public function definition(): array
     {
+        $faker = FakerFactory::create();
         return [
             'student_id' => Student::inRandomOrder()->value('student_id'),
-            'activity_name' => fake()->randomElement([
+            'activity_name' => $faker->randomElement([
                 'Hackathon Participation',
                 'Basketball Tournament',
                 'Debate Competition',
                 'Volunteer Outreach Program',
                 'Coding Bootcamp',
             ]),
-            'category' => fake()->randomElement([
+            'category' => $faker->randomElement([
                 'Sports',
                 'Community Extension',
                 'Competition',
                 'Leadership',
             ]),
-            'achievement' => fake()->optional()->randomElement([
+            'achievement' => $faker->optional()->randomElement([
                 'Champion',
                 '1st Runner-Up',
                 'Best in Teamwork',
                 'Certificate of Participation',
             ]),
-            'activity_date' => fake()->date(),
+            'activity_date' => $faker->date(),
         ];
     }
 }

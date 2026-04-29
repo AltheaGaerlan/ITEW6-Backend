@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Department;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Faker\Factory as FakerFactory;
 
 /**
  * @extends Factory<Department>
@@ -14,8 +15,9 @@ class DepartmentFactory extends Factory
 
     public function definition(): array
     {
+        $faker = FakerFactory::create();
         return [
-            'department_name' => fake()->unique()->randomElement([
+            'department_name' => $faker->unique()->randomElement([
                 'College of Computing Studies',
                 'Information Technology Department',
                 'Computer Science Department',

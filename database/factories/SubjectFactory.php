@@ -2,9 +2,9 @@
 
 namespace Database\Factories;
 
-use App\Models\Subject;
+use Faker\Factory as FakerFactory;
 use App\Models\Department;
-use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Subject;
 
 /**
  * @extends Factory<Subject>
@@ -15,6 +15,7 @@ class SubjectFactory extends Factory
 
     public function definition(): array
     {
+        $faker = FakerFactory::create();
         $subjects = [
             ['code' => 'IT101', 'name' => 'Introduction to Computing', 'units' => 3, 'category' => 'Core', 'semester' => '1st'],
             ['code' => 'IT102', 'name' => 'Computer Programming 1', 'units' => 3, 'category' => 'Core', 'semester' => '1st'],
@@ -34,15 +35,15 @@ class SubjectFactory extends Factory
             ['code' => 'GE102', 'name' => 'Mathematics in the Modern World', 'units' => 3, 'category' => 'GE', 'semester' => '2nd'],
         ];
 
-        $picked = fake()->unique()->randomElement($subjects);
+        $picked = $faker->unique()->randomElement($subjects);
 
         return [
             'subject_code' => $picked['code'],
             'subject_name' => $picked['name'],
-            'description' => fake()->sentence(20),
+            'description' => $faker->sentence(20),
             'units' => $picked['units'],
             'lecture_hours' => $picked['units'],
-            'lab_hours' => fake()->randomElement([0, 3, 6]),
+            'lab_hours' => $faker->randomElement([0, 3, 6]),
             'department_id' => Department::inRandomOrder()->value('department_id'),
             'course_category' => $picked['category'],
             'semester' => $picked['semester'],

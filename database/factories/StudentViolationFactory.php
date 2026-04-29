@@ -2,10 +2,10 @@
 
 namespace Database\Factories;
 
-use App\Models\StudentViolation;
+use Faker\Factory as FakerFactory;
 use App\Models\Student;
 use App\Models\ViolationType;
-use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\StudentViolation;
 
 /**
  * @extends Factory<StudentViolation>
@@ -16,18 +16,19 @@ class StudentViolationFactory extends Factory
 
     public function definition(): array
     {
+        $faker = FakerFactory::create();
         return [
             'student_id' => Student::inRandomOrder()->value('student_id'),
             'violation_type_id' => ViolationType::inRandomOrder()->value('violation_type_id'),
-            'violation_date' => fake()->date(),
-            'description' => fake()->sentence(),
-            'action_taken' => fake()->optional()->randomElement([
+            'violation_date' => $faker->date(),
+            'description' => $faker->sentence(),
+            'action_taken' => $faker->optional()->randomElement([
                 'Warning Issued',
                 'Parent Notified',
                 'Community Service',
                 'Guidance Counseling',
             ]),
-            'status' => fake()->randomElement([
+            'status' => $faker->randomElement([
                 'Pending',
                 'Resolved',
             ]),

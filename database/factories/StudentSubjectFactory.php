@@ -2,10 +2,10 @@
 
 namespace Database\Factories;
 
-use App\Models\StudentSubject;
+use Faker\Factory as FakerFactory;
 use App\Models\Student;
 use App\Models\Subject;
-use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\StudentSubject;
 
 /**
  * @extends Factory<StudentSubject>
@@ -16,13 +16,14 @@ class StudentSubjectFactory extends Factory
 
     public function definition(): array
     {
-        $grade = fake()->randomFloat(2, 1.00, 3.00);
+        $faker = FakerFactory::create();
+        $grade = $faker->randomFloat(2, 1.00, 3.00);
 
         return [
             'student_id' => Student::inRandomOrder()->value('student_id'),
             'subject_id' => Subject::inRandomOrder()->value('subject_id'),
             'school_year' => '2024-2025',
-            'semester' => fake()->randomElement(['1st Semester', '2nd Semester']),
+            'semester' => $faker->randomElement(['1st Semester', '2nd Semester']),
             'grade' => $grade,
             'remarks' => $grade <= 3.00 ? 'Passed' : 'Failed',
         ];

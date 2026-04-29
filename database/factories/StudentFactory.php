@@ -2,8 +2,8 @@
 
 namespace Database\Factories;
 
+use Faker\Factory as FakerFactory;
 use App\Models\Student;
-use App\Models\Section;
 use App\Models\Guardian;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -16,19 +16,20 @@ class StudentFactory extends Factory
 
     public function definition(): array
     {
+        $faker = FakerFactory::create();
         return [
-            'student_number' => '2024-' . fake()->unique()->numerify('####'),
-            'first_name' => fake()->firstName(),
-            'last_name' => fake()->lastName(),
-            'middle_name' => fake()->optional()->firstName(),
-            'gender' => fake()->randomElement(['Male', 'Female']),
-            'birthdate' => fake()->dateTimeBetween('-25 years', '-17 years')->format('Y-m-d'),
+            'student_number' => '2024-' . $faker->unique()->numerify('####'),
+            'first_name' => $faker->firstName(),
+            'last_name' => $faker->lastName(),
+            'middle_name' => $faker->optional()->firstName(),
+            'gender' => $faker->randomElement(['Male', 'Female']),
+            'birthdate' => $faker->dateTimeBetween('-25 years', '-17 years')->format('Y-m-d'),
             'civil_status' => 'Single',
-            'contact_number' => fake()->numerify('09#########'),
-            'email' => fake()->unique()->safeEmail(),
-            'address' => fake()->address(),
+            'contact_number' => $faker->numerify('09#########'),
+            'email' => $faker->unique()->safeEmail(),
+            'address' => $faker->address(),
             'section_id' => Section::inRandomOrder()->value('section_id'),
-            'status' => fake()->randomElement(['Active', 'Inactive']),
+            'status' => $faker->randomElement(['Active', 'Inactive']),
             'guardian_id' => Guardian::inRandomOrder()->value('guardian_id'),
         ];
     }
