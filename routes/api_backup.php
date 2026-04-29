@@ -117,4 +117,3 @@ Route::prefix('v1')->group(function () {
     Route::delete('/users/{id}', [ProfileController::class, 'destroy']);
 });
 });
-});
