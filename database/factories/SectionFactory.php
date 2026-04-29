@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Faculty;
 use App\Models\Section;
-
+use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends Factory<Section>
  */

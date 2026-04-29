@@ -4,7 +4,7 @@ namespace Database\Factories;
 
 use App\Models\Student;
 use App\Models\AcademicAward;
-
+use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends Factory<AcademicAward>
  */

@@ -5,6 +5,7 @@ namespace Database\Factories;
 use App\Models\Student;
 use App\Models\Subject;
 use App\Models\StudentSubject;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends Factory<StudentSubject>

@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\ViolationType;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends Factory<ViolationType>

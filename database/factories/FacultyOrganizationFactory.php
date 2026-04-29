@@ -5,7 +5,7 @@ namespace Database\Factories;
 use App\Models\Faculty;
 use App\Models\Organization;
 use App\Models\FacultyOrganization;
-
+use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends Factory<FacultyOrganization>
  */

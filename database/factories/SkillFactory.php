@@ -3,7 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Skill;
-
+use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends Factory<Skill>
  */
