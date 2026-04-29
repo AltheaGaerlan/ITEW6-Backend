@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use Faker\Factory as FakerFactory;
 use App\Models\ViolationType;
 
 /**
@@ -14,7 +13,6 @@ class ViolationTypeFactory extends Factory
 
     public function definition(): array
     {
-        $faker = FakerFactory::create();
         $types = [
             ['name' => 'Late Attendance', 'severity' => 'Low'],
             ['name' => 'Absence Without Excuse', 'severity' => 'Medium'],
@@ -23,7 +21,7 @@ class ViolationTypeFactory extends Factory
             ['name' => 'Misconduct', 'severity' => 'High'],
         ];
 
-        $picked = $faker->unique()->randomElement($types);
+        $picked = $this->faker->unique()->randomElement($types);
 
         return [
             'violation_name' => $picked['name'],

@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use Faker\Factory as FakerFactory;
 use App\Models\Student;
 use App\Models\Subject;
 use App\Models\StudentSubject;
@@ -16,14 +15,13 @@ class StudentSubjectFactory extends Factory
 
     public function definition(): array
     {
-        $faker = FakerFactory::create();
-        $grade = $faker->randomFloat(2, 1.00, 3.00);
+        $grade = $this->faker->randomFloat(2, 1.00, 3.00);
 
         return [
             'student_id' => Student::inRandomOrder()->value('student_id'),
             'subject_id' => Subject::inRandomOrder()->value('subject_id'),
             'school_year' => '2024-2025',
-            'semester' => $faker->randomElement(['1st Semester', '2nd Semester']),
+            'semester' => $this->faker->randomElement(['1st Semester', '2nd Semester']),
             'grade' => $grade,
             'remarks' => $grade <= 3.00 ? 'Passed' : 'Failed',
         ];

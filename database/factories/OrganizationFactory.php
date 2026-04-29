@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use Faker\Factory as FakerFactory;
 use App\Models\Organization;
 
 /**
@@ -14,7 +13,6 @@ class OrganizationFactory extends Factory
 
     public function definition(): array
     {
-        $faker = FakerFactory::create();
         $orgs = [
             ['name' => 'Junior Programmers Guild', 'type' => 'Academic'],
             ['name' => 'CCS Student Council', 'type' => 'Academic'],
@@ -23,7 +21,7 @@ class OrganizationFactory extends Factory
             ['name' => 'Cybersecurity Society', 'type' => 'Academic'],
         ];
 
-        $picked = $faker->unique()->randomElement($orgs);
+        $picked = $this->faker->unique()->randomElement($orgs);
 
         return [
             'organization_name' => $picked['name'],

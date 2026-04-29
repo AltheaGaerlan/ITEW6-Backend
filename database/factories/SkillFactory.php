@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use Faker\Factory as FakerFactory;
 use App\Models\Skill;
 
 /**
@@ -14,7 +13,6 @@ class SkillFactory extends Factory
 
     public function definition(): array
     {
-        $faker = FakerFactory::create();
         $skills = [
             ['name' => 'PHP Programming', 'category' => 'Technical'],
             ['name' => 'Java Programming', 'category' => 'Technical'],
@@ -28,7 +26,7 @@ class SkillFactory extends Factory
             ['name' => 'Teamwork', 'category' => 'Soft Skill'],
         ];
 
-        $picked = $faker->unique()->randomElement($skills);
+        $picked = $this->faker->unique()->randomElement($skills);
 
         return [
             'skill_name' => $picked['name'],

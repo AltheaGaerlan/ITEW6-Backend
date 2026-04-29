@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use Faker\Factory as FakerFactory;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -24,12 +23,11 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
-        $faker = FakerFactory::create();
         return [
-           'username' => $faker->unique()->userName(),
-            'name' => $faker->name(),
-            'email' => $faker->unique()->safeEmail(),
-            'role' => $faker->randomElement(['admin', 'user']),
+           'username' => $this->faker->unique()->userName(),
+            'name' => $this->faker->name(),
+            'email' => $this->faker->unique()->safeEmail(),
+            'role' => $this->faker->randomElement(['admin', 'user']),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),

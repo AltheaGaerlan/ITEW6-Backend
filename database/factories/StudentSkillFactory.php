@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use Faker\Factory as FakerFactory;
 use App\Models\Student;
 use App\Models\Skill;
 use App\Models\StudentSkill;
@@ -16,22 +15,21 @@ class StudentSkillFactory extends Factory
 
     public function definition(): array
     {
-        $faker = FakerFactory::create();
         return [
             'student_id' => Student::inRandomOrder()->value('student_id'),
             'skill_id' => Skill::inRandomOrder()->value('skill_id'),
-            'skill_level' => $faker->randomElement([
+            'skill_level' => $this->faker->randomElement([
                 'Beginner',
                 'Intermediate',
                 'Advanced',
             ]),
-            'certification' => $faker->optional()->randomElement([
+            'certification' => $this->faker->optional()->randomElement([
                 'TESDA NC II',
                 'Cisco Certificate',
                 'Google Certificate',
                 'Microsoft Certification',
             ]),
-            'date_acquired' => $faker->optional()->date(),
+            'date_acquired' => $this->faker->optional()->date(),
         ];
     }
 }

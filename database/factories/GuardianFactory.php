@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use Faker\Factory as FakerFactory;
 use App\Models\Guardian;
 
 /**
@@ -14,12 +13,11 @@ class GuardianFactory extends Factory
 
     public function definition(): array
     {
-        $faker = FakerFactory::create();
         return [
-            'first_name' => $faker->firstName(),
-            'last_name' => $faker->lastName(),
-            'email' => $faker->unique()->safeEmail(),
-            'contact_number' => $faker->numerify('09#########'),
+            'first_name' => $this->faker->firstName(),
+            'last_name' => $this->faker->lastName(),
+            'email' => $this->faker->unique()->safeEmail(),
+            'contact_number' => $this->faker->numerify('09#########'),
         ];
     }
 }
